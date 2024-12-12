@@ -1,35 +1,37 @@
 import { useState } from "react";
-import Button from "../../ui/button/Button";
+import { VscListSelection } from "react-icons/vsc";
 import { Diagram } from "../../ui/diagram/Diagram";
+import { SnackBar } from "../../ui/snackbar/SnackBar";
+import styles from "./Home.module.scss";
 
 export const Home = () => {
 	const [close, setClose] = useState(false);
-
-	const component = [
+	const closeBlock = () => {
+		setClose(!close);
+	};
+	const data = [
 		{
 			title: "Диаграмма",
+			component: <Diagram />,
+		},
+		{
+			title: "Уведомления",
+			component: <SnackBar />,
 		},
 	];
 
 	return (
-		<div>
-			<header>
-				<span>Select component</span>
-				{component.map((item, index) => {
-					return (
-						<div key={index}>
-							<button
-								onClick={() => {
-									setClose(!close);
-								}}
-							>
-								{item.title}
-							</button>
-							{close ? <Diagram /> : <Button text="click" />}
-						</div>
-					);
-				})}
-			</header>
+		<div className={styles.container}>
+			<VscListSelection onClick={closeBlock} />
+
+			{data.map((item, index) => {
+				return close ? (
+					<div key={index}>
+						<span>{item.title}</span>
+						<div>{item.component}</div>
+					</div>
+				) : null;
+			})}
 		</div>
 	);
 };
