@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { VscListSelection } from "react-icons/vsc";
 import { Diagram } from "../../ui/diagram/Diagram";
+import { Keyboard } from "../../ui/keyboard/Keyboard";
 import { SnackBar } from "../../ui/snackbar/SnackBar";
 import styles from "./Home.module.scss";
 
@@ -18,6 +19,7 @@ export const Home = () => {
 			title: "Уведомления",
 			component: <SnackBar />,
 		},
+		{ title: "Клавиатура", component: <Keyboard /> },
 	];
 
 	return (

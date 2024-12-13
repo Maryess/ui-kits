@@ -4,7 +4,6 @@ import styles from "./SnackBar.module.scss";
 
 export const SnackBar = () => {
 	const [status, setStatus] = useState("");
-
 	return (
 		<div className={styles.snackbar}>
 			<span>Click to button</span>
@@ -14,8 +13,8 @@ export const SnackBar = () => {
 			</div>
 
 			<div>
-				{status === "success" || status === "error" ? (
-					<div className={styles.error}>
+				{status === "error" || status === "success" ? (
+					<div className={status === "error" ? styles.error : styles.success}>
 						<span>{`${status}`}</span>
 					</div>
 				) : null}
